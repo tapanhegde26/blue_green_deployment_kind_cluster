@@ -80,6 +80,15 @@ kubectl get svc -n green
 
 
 ## Solution
+* create role and rolebinding for `test-user` : this is already created and present in `k8s-files` repo
+```
+kubectl apply -f user-role.yaml
+kubectl apply -f user-rolebinding.yaml
+```
+* To test these changes, we can create a temporary user or use an existing test user account to verify the access permissions. Here's how you can do it:
+
+
+
 
 
 
