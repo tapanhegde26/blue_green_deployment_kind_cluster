@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: blue-api-ingress
+spec:
+  rules:
+    - host: 34.83.241.203
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blue-api
+                port:
+                  number: 8880
+

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blue-api
+  template:
+    metadata:
+      labels:
+        app: blue-api
+    spec:
+      containers:
+      - name: blue-api
+        image: tapan2609/blue-app
+        ports:
+        - containerPort: 8880

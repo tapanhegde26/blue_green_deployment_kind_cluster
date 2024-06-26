@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: green-api
+  template:
+    metadata:
+      labels:
+        app: green-api
+    spec:
+      containers:
+      - name: green-api
+        image: tapan2609/green-app
+        ports:
+        - containerPort: 8881
