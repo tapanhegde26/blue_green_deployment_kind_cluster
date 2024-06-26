@@ -38,12 +38,7 @@ kubectl version --client
 * create 2 separate namespaces namely 'blue' and 'green'
 * Deploy web-apps in both namespaces
 
-## Usecase-2
-* create a test-user in machine
-* Give only 'service' access to test-user, so that he can access only svc in 'green' namespace
-* test changes and confirm
-
-## Solution - 1
+## Solution
 * Create 5 node k8s cluster using kind.
 ```
 kubectl cluster-info --context kind-kind
@@ -60,7 +55,7 @@ cat <<EOF > kind-config.yaml
 kind create cluster --config kind-config.yaml #wait till cluster creation completes
 kubectl get nodes
 ```
-Inside `k8s-file` folder of this you will get deploy,svc files for blue and green objects.
+Inside `k8s-files` folder of this repo , you will get deploy,svc files for blue and green objects.
 ```
 cd k8s-files
 kubectl apply -f blue-deploy.yaml
@@ -68,5 +63,24 @@ kubectl apply -f blue-service.yaml
 kubectl apply -f green-deploy.yaml
 kubectl apply -f green-service.yaml
 ```
+Once above apply completes, you should be able to see 'blue-app' deploy and 'blue-service' service in blue namespace  & 'green-app' deploy and 'green-service' service in green namespace.
+```
+kubectl get po -n blue
+kubectl get po -n green
+kubectl get deploy -n blue
+kubectl get deploy -n green
+kubectl get svc -n blue
+kubectl get svc -n green
+```
+
+## Usecase-2
+* create a test-user in machine
+* Give only 'service' access to test-user, so that he can access only svc in 'green' namespace
+* test changes and confirm
+
+
+## Solution
+
+
 
 
