@@ -46,4 +46,27 @@ kubectl version --client
 ## Solution - 1
 * Create 5 node k8s cluster using kind.
 ```
+kubectl cluster-info --context kind-kind
+cat <<EOF > kind-config.yaml
+   kind: Cluster
+   apiVersion: kind.x-k8s.io/v1alpha4
+   nodes:
+       - role: control-plane
+       - role: worker
+       - role: worker
+       - role: worker
+       - role: worker
+     EOF
+kind create cluster --config kind-config.yaml #wait till cluster creation completes
+kubectl get nodes
+```
+Inside `k8s-file` folder of this you will get deploy,svc files for blue and green objects.
+```
+cd k8s-files
+kubectl apply -f blue-deploy.yaml
+kubectl apply -f blue-service.yaml
+kubectl apply -f green-deploy.yaml
+kubectl apply -f green-service.yaml
+```
+
 
