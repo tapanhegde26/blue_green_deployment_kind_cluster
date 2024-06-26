@@ -121,7 +121,7 @@ This command will list the names of the kind containers. Identify the control pl
 Next, copy the CA certificate and key from the kind control plane container to your local machine:
 
 
-# Replace <control-plane-container-name> with the actual name
+### Replace <control-plane-container-name> with the actual name
 ```
 docker cp <control-plane-container-name>:/etc/kubernetes/pki/ca.crt .
 docker cp <control-plane-container-name>:/etc/kubernetes/pki/ca.key .
@@ -145,12 +145,12 @@ Generate a kubeconfig file for test-user:
 kubectl config set-credentials test-user --client-certificate=$(pwd)/test-user.crt --client-key=$(pwd)/test-user.key
 ```
 
-# Set context for test-user
+### Set context for test-user
 ```
 kubectl config set-context test-user-context --cluster=kind-kind --namespace=green --user=test-user
 ```
 
-# Switch to the test-user context
+### Switch to the test-user context
 ```
 kubectl config use-context test-user-context
 ```
